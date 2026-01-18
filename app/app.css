@@ -283,7 +283,7 @@
     }
   }
   .nav-footer {
-    @apply flex items-center gap-2.5 pb-8;
+    @apply flex items-center gap-2.5 pt-40 pb-8;
     img {
       @apply size-10 rounded-full aspect-square;
     }
