@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "~/lib/utils";
 import { useLocation } from "react-router";
 
-const header = ({
+const Header = ({
   title,
   description,
 }: {
@@ -38,4 +38,4 @@ const header = ({
   );
 };
 
-export default header;
+export default Header;
