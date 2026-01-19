@@ -1,0 +1,51 @@
+import React from "react";
+import { calculateTrendPercentage } from "~/lib/utils";
+import { cn } from "~/lib/utils";
+
+const StatsCard = ({
+  headerTitle,
+  total,
+  currentMonthCount,
+  lastMonthCount,
+}: StatsCard) => {
+  const { trend, percentage } = calculateTrendPercentage(
+    currentMonthCount,
+    lastMonthCount,
+  );
+  const isDecrement = trend === "decrement";
+  return (
+    <article className="stats-card">
+      <h3 className="text-base font-medium">{headerTitle}</h3>
+      <div className="content">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-4xl font-semibold">{total}</h2>
+          <div className="flex items-center gap-2">
+            <figure className="flex items-center gap-1">
+              <img
+                src={`assets/icons/${isDecrement ? "arrow-down-red.svg" : "arrow-up-green.svg"}`}
+                alt="arrow"
+                className="size-5"
+              />
+              <figcaption
+                className={cn(
+                  "text-sm font-medium",
+                  isDecrement ? "text-red-500" : "text-green-500",
+                )}
+              >
+                {Math.round(percentage)}%
+              </figcaption>
+            </figure>
+            <p className="text-sm text-gray-500 truncate">vs last month</p>
+          </div>
+        </div>
+        <img
+          src={`/assets/icons/${isDecrement ? "decrement.svg" : "increment.svg"}`}
+          alt="trend graph"
+          className="xl:w-32 w-50 h-full md:h-25 xl:h-full"
+        />
+      </div>
+    </article>
+  );
+};
+
+export default StatsCard;

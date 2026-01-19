@@ -2,11 +2,11 @@ import React from "react";
 import { Link, NavLink } from "react-router";
 import { sidebarItems } from "~/constants";
 import { cn } from "~/lib/utils";
-const NavItems = () => {
+const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
   const user = {
     name: "John Doe",
     email: "kjhla@gmail.com",
-    imageUrl: "/assets/icons/david.webp",
+    imageUrl: "/assets/images/david.webp",
   };
   return (
     <section className="nav-items">
@@ -17,7 +17,7 @@ const NavItems = () => {
       <div className="container">
         <nav>
           {sidebarItems.map(({ id, icon, label, href }) => (
-            <NavLink key={id} to={href}>
+            <NavLink key={id} to={href} onClick={handleClick}>
               {({ isActive }: { isActive: boolean }) => (
                 <div
                   className={cn("group nav-item", {
@@ -37,7 +37,7 @@ const NavItems = () => {
         </nav>
         <footer className="nav-footer">
           <img
-            src={user?.imageUrl || "/assets/icons/david.webp"}
+            src={user?.imageUrl || "/assets/images/david.webp"}
             alt={user?.name || "david"}
           />
           <article>
