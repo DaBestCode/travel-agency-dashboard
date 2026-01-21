@@ -1,0 +1,6 @@
+{
+  "name": "com.chrome.devtools",
+  "version": "1",
+  "description": "Placeholder file to satisfy Chrome DevTools well-known request",
+  "manifest": {}
+}

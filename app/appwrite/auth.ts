@@ -101,3 +101,21 @@ export const getUser = async () => {
     return null;
   }
 };
+
+export const getAllUsers = async (limit: number, offset: number) => {
+  try {
+    const { documents: users, total } = await database.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.limit(limit), Query.offset(offset)],
+    );
+    if (total === 0) {
+      console.log("No users found in the database.");
+      return { users: [], total };
+    }
+    return { users, total };
+  } catch (e) {
+    console.error("Error fetching all users:", e);
+    return { users: [], total: 0 };
+  }
+};

@@ -12,7 +12,11 @@ const MobileSidebar = () => {
     <div className="mobile-sidebar wrapper">
       <header>
         <Link to="/">
-          <img src="assets/icons/logo.svg" alt="logo" className="size-[30px]" />
+          <img
+            src="/assets/icons/logo.svg"
+            alt="logo"
+            className="size-[30px]"
+          />
           <h1>TourVisto</h1>
         </Link>
         <button onClick={toggleSidebar} className="hover:cursor-pointer">
